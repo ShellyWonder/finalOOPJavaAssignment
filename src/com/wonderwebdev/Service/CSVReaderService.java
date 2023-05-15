@@ -15,7 +15,8 @@ public class CSVReaderService {
 	
 	//Declaring the variable: accessModifier/ type / variableName
 	private static CSVReaderService csvReaderService = null;
-	
+	 private List<Product> products = new ArrayList<>();
+	 
 	//private no argument constructor creates singleton pattern
 	private CSVReaderService( ) {
 		
@@ -28,42 +29,40 @@ public class CSVReaderService {
 		return csvReaderService;
 	}
 
-	
+	public List<Product> getProducts() {
+		return products;
+	}
 //Implement a method called readProductsFromFile(String filePath) that accepts a file path as an argument
 	public void readProductsFromFile(Path path) throws IOException {
 	try {		
 	
 		//and reads the CSV file line by line, 
-List<String> data = Files.readAllLines(path);//Returns a list(interface) extending from a collection
-List<Product> products = new ArrayList<>();
-//parsing each line into the corresponding properties 
-//of a new Product object. 
-data.stream()
-.forEach((String lineOfData) -> {
-	try {
-		
-		String[] productData = lineOfData.split(",");
-		if (productData.length == 4) {		
-		Product product = new Product();
-		product.setId(Integer.parseInt(productData[0].trim()));
-		product.setName(productData[1]);
-		product.setQuantity(Integer.parseInt(productData[2].trim()));
-		product.setPrice(Double.parseDouble(productData[3].trim()));
-		products.add(product);
-		}
-		
-	} catch (NumberFormatException e) {
-		System.out.println("Program cannot read the file.");
-		e.printStackTrace();
-	}
+			List<String> data = Files.readAllLines(path);//Returns a list(interface) extending from a collection
+			List<Product> products = new ArrayList<>();
+			//parsing each line into the corresponding properties 
+			//of a new Product object. 
+			data.stream()
+			.forEach((String lineOfData) -> {
+					try {
+						
+						String[] productData = lineOfData.split(",");
+						if (productData.length == 4) {		
+						Product product = new Product();
+						product.setId(Integer.parseInt(productData[0].trim()));
+						product.setName(productData[1]);
+						product.setQuantity(Integer.parseInt(productData[2].trim()));
+						product.setPrice(Double.parseDouble(productData[3].trim()));
+						//store the created Product objects in an ArrayList<Product>.
+						products.add(product);
+						}
+						
+					} catch (NumberFormatException e) {
+						System.out.println("Program cannot read the file.");
+						e.printStackTrace();
+					}
+			
+			});
 
-});
-
-
-//store the created Product objects in an ArrayList<Product>.
-for (int i = 0; i < data.size(); i++) {
-	//System.out.println(data.get(i));
-}
 
 	} catch(IOException e){
 	 System.out.println("Program cannot read the file.");

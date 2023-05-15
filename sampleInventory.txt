@@ -19,7 +19,7 @@
 19, "Men's Tie", 45, 20.00
 20, "Women's Sweater", 30, 39.99
 21, "Children's Gloves", 50, 8.00
-22, "Men's Winter Jacket", 15, 110.00
+22, "Men's Winter Jacket", 7, 110.00
 23, "Women's Boots", 20, 70.00
 24, "Children's Pajamas", 40, 15.00
 25, "Men's Sunglasses", 30, 90.00
