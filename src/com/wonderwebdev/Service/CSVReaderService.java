@@ -1,8 +1,11 @@
 package com.wonderwebdev.Service;
-import java.nio.file.Path;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.wonderwebdev.domain.Product;
 
 //Handles reading the CSV file containing product data.
 
@@ -24,14 +27,47 @@ public class CSVReaderService {
 		//returns existing class NOT new instance
 		return csvReaderService;
 	}
+
 	
 //Implement a method called readProductsFromFile(String filePath) that accepts a file path as an argument
 	public void readProductsFromFile(Path path) throws IOException {
-			
-	//and reads the CSV file line by line, parsing each line 
-	System.out.println(Files.readAllLines(path));
-	//into the corresponding properties of a new Product object. 
-	//store the created Product objects in an ArrayList<Product>.
-	}
+	try {		
 	
+		//and reads the CSV file line by line, 
+List<String> data = Files.readAllLines(path);//Returns a list(interface) extending from a collection
+List<Product> products = new ArrayList<>();
+//parsing each line into the corresponding properties 
+//of a new Product object. 
+data.stream()
+.forEach((String lineOfData) -> {
+	try {
+		
+		String[] productData = lineOfData.split(",");
+		if (productData.length == 4) {		
+		Product product = new Product();
+		product.setId(Integer.parseInt(productData[0].trim()));
+		product.setName(productData[1]);
+		product.setQuantity(Integer.parseInt(productData[2].trim()));
+		product.setPrice(Double.parseDouble(productData[3].trim()));
+		products.add(product);
+		}
+		
+	} catch (NumberFormatException e) {
+		System.out.println("Program cannot read the file.");
+		e.printStackTrace();
+	}
+
+});
+
+
+//store the created Product objects in an ArrayList<Product>.
+for (int i = 0; i < data.size(); i++) {
+	//System.out.println(data.get(i));
+}
+
+	} catch(IOException e){
+	 System.out.println("Program cannot read the file.");
+	 e.printStackTrace();
+	}
+ }
 }
