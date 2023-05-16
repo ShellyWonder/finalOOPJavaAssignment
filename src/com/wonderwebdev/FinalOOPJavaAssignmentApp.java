@@ -13,8 +13,8 @@ public class FinalOOPJavaAssignmentApp {
     CSVReaderService cSVReaderService = CSVReaderService.getInstance();
     cSVReaderService.readProductsFromFile(Path.of("sampleInventory.txt"));
     List<Product>products = cSVReaderService.getProducts();
-    
     ReportGeneratorService reportGeneratorService = new ReportGeneratorService();
+    reportGeneratorService.getProductCount(products);
     reportGeneratorService.generateLowInventoryReport(products);
     
 	}

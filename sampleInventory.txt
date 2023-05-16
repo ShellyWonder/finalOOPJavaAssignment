@@ -28,3 +28,18 @@
 28, "Men's Hat", 50, 15.00
 29, "Women's Ankle Boots", 20, 80.00
 30, "Children's T-Shirt", 80, 10.00
+101,"Sofa",7,102.00
+102,"Recliner",6,103.00
+103,"Coffee Table",9,104.00
+104,"End Table",8,105.00
+105,"Sectional Couch",7,106.00
+106,"Dining Table",5,107.00
+107,"Dining Chair",4,108.00
+108,"Bar Stool",3,109.00
+109,"Desk",2,110.00
+110,"Office Chair",1,111.00
+111,"Apples",12,1.99
+112,"Bread",5,2.99
+113,"Milk",8,3.49
+114,"Chicken",4,9.99
+115,"Cereal",10,4.99

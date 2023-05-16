@@ -38,7 +38,6 @@ public class CSVReaderService {
 	
 		//and reads the CSV file line by line, 
 			List<String> data = Files.readAllLines(path);//Returns a list(interface) extending from a collection
-			List<Product> products = new ArrayList<>();
 			//parsing each line into the corresponding properties 
 			//of a new Product object. 
 			data.stream()
