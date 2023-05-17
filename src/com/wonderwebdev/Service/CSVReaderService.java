@@ -15,7 +15,7 @@ public class CSVReaderService {
 	
 	//Declaring the variable: accessModifier/ type / variableName
 	private static CSVReaderService csvReaderService = null;
-	 private List<Product> products = new ArrayList<>();
+	 
 	 
 	//private no argument constructor creates singleton pattern
 	private CSVReaderService( ) {
@@ -29,11 +29,11 @@ public class CSVReaderService {
 		return csvReaderService;
 	}
 
-	public List<Product> getProducts() {
-		return products;
-	}
+	
+	
 //Implement a method called readProductsFromFile(String filePath) that accepts a file path as an argument
-	public void readProductsFromFile(Path path) throws IOException {
+	public List<Product> readProductsFromFile(Path path) throws IOException {
+		List<Product> products = new ArrayList<>();
 	try {		
 	
 		//and reads the CSV file line by line, 
@@ -43,7 +43,6 @@ public class CSVReaderService {
 			data.stream()
 			.forEach((String lineOfData) -> {
 					try {
-						
 						String[] productData = lineOfData.split(",");
 						if (productData.length == 4) {		
 						Product product = new Product();
@@ -67,5 +66,6 @@ public class CSVReaderService {
 	 System.out.println("Program cannot read the file.");
 	 e.printStackTrace();
 	}
+	return products;
  }
 }
