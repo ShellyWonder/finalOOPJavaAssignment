@@ -11,7 +11,6 @@ public class FinalOOPJavaAssignmentApp {
 	public static void main(String[] args) throws IOException {
 	
     CSVReaderService cSVReaderService = CSVReaderService.getInstance();
-    cSVReaderService.readProductsFromFile(Path.of("sampleInventory.txt"));
     List<Product>products = cSVReaderService.readProductsFromFile(Path.of("sampleInventory.txt"));
     ReportGeneratorService reportGeneratorService = new ReportGeneratorService();
     reportGeneratorService.getProductCount(products);
